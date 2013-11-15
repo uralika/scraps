@@ -1,0 +1,32 @@
+List of all users
+
+<%= collection_select :user, :user, @users.all, :id, :name %> 
+<script>
+
+$(function(){ //do all below after page loaded
+
+	$("#user_user").change(function(){
+
+	$.get("/users/"+ $("#user_user").val() +"/scraps", xyz); // This is AJAX MOTHAFUCKA!!!
+
+	});
+
+});
+
+function xyz(scraps){
+
+var x = "<ul>";
+
+scraps.forEach( function(scrap){
+x += "<li>" + scrap.name + "- " + scrap.code + "</li>";
+} );
+
+x += "</ul>";
+
+alert(x);
+	$("#myScraps").html(x);
+}
+
+</script>
+
+<div id="myScraps"></div>
